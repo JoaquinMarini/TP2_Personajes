@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import PersonajeRouter from "./src/controllers/personajeController.js/index.js";
+import PersonajeRouter from "./src/controllers/personajeController.js";
 
 const app = express();
 const port = 5000;

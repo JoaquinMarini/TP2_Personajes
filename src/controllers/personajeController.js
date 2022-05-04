@@ -2,49 +2,51 @@ import { Router } from 'express';
 import { PersonajeService } from '../services/personajeService.js';
 
 const router = Router();
-const PersonajeService = new PersonajeService();
+const personajeService = new PersonajeService();
 
 router.get('', async (req, res) => {
     console.log(`This is a get operation`);
-    return res.status(200).json();
+
+    const Personaje = await personajeService.getPersonaje();
+
+    return res.status(200).json(Personaje);
   });
 
- /* router.get('/:id', async (req, res) => {
+    router.get('/:id', async (req, res) => {
     console.log(`Request URL Param: ${req.params.id}`);
     console.log(`This is a get operation`);
   
-    const Personaje = await PersonajeService.getPersonajeById(req.params.id);
+    const Personaje = await personajeService.getPersonajeById(req.params.id);
   
-    return res.status(200).json();
+    return res.status(200).json(Personaje);
   });
   
   router.post('', async (req, res) => {
     console.log(`This is a post operation`);
   
-    const Personaje = await PersonajeService.createPersonaje(req.body);
+    const Personaje = await personajeService.createPersonaje(req.body);
   
-    return res.status(201).json();
+    return res.status(201).json(Personaje);
   });
   
   router.put('/:id', async (req, res) => {
     console.log(`Request URL Param: ${req.params.id}`);
     console.log(`This is a put operation`);
   
-    const Personaje = await PersonajeService.updatePersonajeById(req.body);
+    const Personaje = await personajeService.updatePersonajeById(req.params.id, req.body);
   
-    return res.status(200).json();
+    return res.status(200).json(Personaje);
   });
   
   router.delete('/:id', async (req, res) => {
     console.log(`Request URL Param: ${req.params.id}`);
     console.log(`This is a delete operation`);
   
-    const Personaje = await pizzaService.deletePersonajeById(req.params.id);
+    const Personaje = await personajeService.deletePersonajeById(req.params.id);
   
-    return res.status(200).json();
+    return res.status(200).json(Personaje);
   });
   
-  export default router;
-  */
+
 
   export default router;
